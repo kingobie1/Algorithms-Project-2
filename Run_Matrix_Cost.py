@@ -1,55 +1,71 @@
-# Obatola Seward-Evans
-# CS 2223 Project 2
-# April 17, 2016
+"""
+Obatola Seward-Evans
+CS 2223 Project 2
+April 17, 2016
 
-# The main function. asks for the user if he/she would like to run the exhastive search or 
-# a greedy algorithm 
-# The function then runs either exhastiveSearch() or greedyAlgorithm() which can be found in 
-# Functions.py. For both functions the time elapsed is printed
-# [relies on the 'exhastiveSearch' and 'greedyAlgorithm' in the file Functions.py]
+main
+	The main function. asks for the user if he/she would like to run the exhastive search or 
+	a greedy algorithm. The function then runs either exhastiveSearch() or greedyAlgorithm() 
+	which can be found in Functions.py. For both functions the time elapsed is printed.
+	[relies on the 'exhastiveSearch' and 'greedyAlgorithm' in the file Functions.py]
+
+	The two functions solve the problem below:
+		You are a high-level security manager at the Gombel Security Firm. On any day you have
+	    access to n professional cryptographers and m messages to crack. Today, you have 4 hackers
+	    at your disposal and 4 intercepted messages that need to be decrypted immediately.
+
+	    Each cryptographer can only be assigned to exactly one message and exactly one message
+	    can be assigned to one cryptographer. Your goal is to find an assignment that minimizes
+	    the total cost to crack the codes. The cost matrix is below:
+"""
 
 #!/usr/bin/python
 
 # import the actual functions from Functions.py:
 from Functions import *
 
-count = 0
-optimalCost = 0
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+isFirstTime = 1 # is this first time the user has been to main menu?
+optimalCost = 0 # optimal cost determined by algorithms
 
 while True:
-    print "\n\n- - - MAIN MENU - - - "
-    print "Select function:"
-    print "  1. exhastive search"
-    print "  2. greedy algorithm"
-    print "  3. quit"
-    option = raw_input("\n> ") # gather option value from user.
+	print "\n\n- - - MAIN MENU - - - "
+	print "Select function:"
+	print "  1. exhastive search"
+	print "  2. greedy algorithm"
+	print "  3. quit"
+	option = raw_input("\n> ") # gather option value from user.
 
-    width = 4
-    height = 4
-    # if count == 0: # if first time at main menu
-    #     width = input("\nwhat is the matrix width?\n> ")
-    #     height = input("\nwhat is the matrix height?\n> ")
+	width = 4
+	height = 4
+	# if isFirstTime == 1: # if first time at main menu
+	#     width = input("\nwhat is the matrix width?\n> ")
+	#     height = input("\nwhat is the matrix height?\n> ")
 
-    getMatrix(width, height) # get matrix from matrix file
+	getMatrix(width, height) # get matrix from input_Matrix file
 
-    # run BRUTE FORCE function if user selects 1st option:
-    if option == "1" or option == "exhastive search" or option == "e":
-        print "\n\n- - - EXHAUSTIVE SEARCH ALGORITHM - - - "
+	# run EXHASTIVE SEARCH if user selects 1st option:
+	if option == "1" or option == "exhastive search" or option == "e":
+		print "\n\n- - - EXHAUSTIVE SEARCH ALGORITHM - - - "
 
-    # run RECURSIVE function if user selects 1st option:
-    elif option == "2" or option == "greedy algorithm" or option == "g":
-        print "\n\n- - - GREEDY ALGORITHM - - - \n"
-        optimalCost = greedyAlgorithm(width, height)
-        print "\n  The optimal cost using the greedy algorithm is ", optimalCost, "\n"
+	# run GREEDY ALGORITHM if user selects 2ND option:
+	elif option == "2" or option == "greedy algorithm" or option == "g":
+		print "\n\n- - - GREEDY ALGORITHM - - - \n"
+		t0 = time.clock()  # get initial time for recursive function.
+		optimalCost = greedyAlgorithm(width, height) # get optimat cost
+		print "\n    The optimal cost using the greedy algorithm is ", optimalCost
+		print "    time elapsed:", (time.clock() - t0) * 1000,"millisecond\n"
 
-    elif option == "3" or option == "quit" or option == "q":
-        print "\n\nIt's sad to see you go :(\n"
-        break # end while loop and quit
+	# QUIT application
+	elif option == "3" or option == "quit" or option == "q":
+		print "\n\nIt's sad to see you go :(\n"
+		break # end while loop and quit
 
-    else:
-        print "\nWrong input dude... Let's this try again :D"
+	else:
+		print "\nWrong input dude... Let's this try again :D"
 
-    count = 1
-    time.sleep(3) # wait 4 seconds before showing main menu again
+	isFirstTime = 0 # no longer the first time running through the loop
+	time.sleep(3) # wait 4 seconds before showing main menu again
 
 
