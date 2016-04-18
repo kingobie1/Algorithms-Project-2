@@ -24,16 +24,28 @@ def getMatrix(width, height):
             # str = ''.join(str.split()) # take out space and newline
             # matrix[i, j] = int(str) # convert to integer and add to matrix
             matrix[h, w] = int(tempArray[w]) # convert to integer and add to matrix
-            print matrix[h, w]
+            # print matrix[h, w]
 
     matrixFile.close()
     return matrix
 
-# def greedyAlgorithm(width, height):
-#     minForRow
-#     totalCost
-#     takenColumns=[0 for i in range(width)] # means taken
+def greedyAlgorithm(width, height):
+    minForRow = 1000000
+    index = 0
+    optimalCost = 0
+    takenColumns=[0 for i in range(width)] # means taken
 
-#     for i in range(0, width)
-#         print takenColumns[i]
+    for row in range (0, height):
+        for col in range(0, width):
+            if takenColumns[col] == 0: # if the column has yet to be taken
+                if matrix[row, col] < minForRow: # check if it has the minimum cost
+                    minForRow = matrix[row, col] # if the minimum cost so far has been found change var
+                    index = col # compute the index where the minimum cost was found
 
+        optimalCost += minForRow
+        takenColumns[index] = 1 # show that takenColumns[index] has been taken
+        print "  minimum for row ", row , " is: ", minForRow, " found at column: ", index, "ie coordinates [",row,",",index,"]"
+        minForRow = 1000000 # reinitialize
+
+
+    return optimalCost

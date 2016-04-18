@@ -14,29 +14,35 @@
 from Functions import *
 
 count = 0
+optimalCost = 0
+
 while True:
     print "\n\n- - - MAIN MENU - - - "
     print "Select function:"
     print "  1. exhastive search"
     print "  2. greedy algorithm"
     print "  3. quit"
-    option = input("\n> ") # gather option value from user.
+    option = raw_input("\n> ") # gather option value from user.
 
-    if count == 0: # if first time at main menu
-        width = input("\nwhat is the matrix width?\n> ")
-        height = input("\nwhat is the matrix height?\n> ")
+    width = 4
+    height = 4
+    # if count == 0: # if first time at main menu
+    #     width = input("\nwhat is the matrix width?\n> ")
+    #     height = input("\nwhat is the matrix height?\n> ")
+
+    getMatrix(width, height) # get matrix from matrix file
 
     # run BRUTE FORCE function if user selects 1st option:
-    if option == 1:
+    if option == "1" or option == "exhastive search" or option == "e":
         print "\n\n- - - EXHAUSTIVE SEARCH ALGORITHM - - - "
-        print "given matrix is: \n", getMatrix(width, height)
-
 
     # run RECURSIVE function if user selects 1st option:
-    elif option == 2:
-        print "\n\n- - - GREEDY ALGORITHM - - - "
+    elif option == "2" or option == "greedy algorithm" or option == "g":
+        print "\n\n- - - GREEDY ALGORITHM - - - \n"
+        optimalCost = greedyAlgorithm(width, height)
+        print "\n  The optimal cost using the greedy algorithm is ", optimalCost, "\n"
 
-    elif option == 3:
+    elif option == "3" or option == "quit" or option == "q":
         print "\n\nIt's sad to see you go :(\n"
         break # end while loop and quit
 
