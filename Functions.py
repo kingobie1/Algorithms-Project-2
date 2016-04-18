@@ -7,11 +7,20 @@
 import time
 
 # - - - "BRUTE FORCE" FUNCTION - - -
-def getMatrix():
+def getMatrix(width, height):
     # matrix = numpy.zeros((width, height))
     matrix = {} # create matrix of dynamic size
+    i = 0
+    j = 0
 
+    matrixFile = open("matrix", "r")
 
+    for i in range(0, height):
+        for j in range(0, width):
+            str = matrixFile.read(2)
+            str = ''.join(str.split()) # take out space and newline
+            matrix[i, j] = int(str) # convert to integer and add to matrix
+            print matrix[i, j]
 
-    matrix[1000,2000] = 15
-    return matrix[1000,2000]
+    matrixFile.close()
+    return matrix

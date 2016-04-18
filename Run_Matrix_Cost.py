@@ -13,6 +13,7 @@
 # import the actual functions from Functions.py:
 from Functions import *
 
+count = 0
 while True:
     print "\n\n- - - MAIN MENU - - - "
     print "Select function:"
@@ -21,10 +22,14 @@ while True:
     print "  3. quit"
     option = input("\n> ") # gather option value from user.
 
+    if count == 0: # if first time at main menu
+        width = input("\nwhat is the matrix width?\n> ")
+        height = input("\nwhat is the matrix height?\n> ")
+
     # run BRUTE FORCE function if user selects 1st option:
     if option == 1:
         print "\n\n- - - EXHAUSTIVE SEARCH ALGORITHM - - - "
-        print "given matrix is: \n", getMatrix()
+        print "given matrix is: \n", getMatrix(width, height)
 
 
     # run RECURSIVE function if user selects 1st option:
@@ -38,6 +43,7 @@ while True:
     else:
         print "\nWrong input dude... Let's this try again :D"
 
+    count = 1
     time.sleep(3) # wait 4 seconds before showing main menu again
 
 
