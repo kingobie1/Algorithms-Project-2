@@ -1,6 +1,4 @@
-Obatola Seward-Evans
-CS 2223 Project 1
-March 30, 2016
+Obatola Seward-Evans * CS 2223 Project 2
 
 # Algorithms Project 2
 
