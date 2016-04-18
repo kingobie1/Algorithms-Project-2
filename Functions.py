@@ -64,7 +64,7 @@ exhaustiveSearch(width, height)
 """
 # matrix [row, column]
 def exhaustiveSearch(width, height):
-	costArray = [0 for i in range(300)]
+	costArray = [0 for i in range(24)]
 	cost = 0
 	previousCost = 0
 	count = 0
@@ -74,54 +74,34 @@ def exhaustiveSearch(width, height):
 		previousCost0 = cost
 
 		for rowP1 in range (0, 4): # for each row in column 1
-			cost += matrix[rowP1, 1]
-			previousCost1 = cost
+			# Each row can only be assigned to exactly one column and 
+			# exactly one column can be assigned to one row.
+			if rowP1 != rowP0:
+				cost += matrix[rowP1, 1]
+				previousCost1 = cost
 
-			for rowP2 in range (0, 4): # for each row in column 2
-				cost += matrix[rowP2, 2]
-				previousCost2 = cost
+				for rowP2 in range (0, 4): # for each row in column 2
+					# Each row can only be assigned to exactly one column and 
+					# exactly one column can be assigned to one row.
+					if rowP2 != rowP0 and rowP2 != rowP1:
+						cost += matrix[rowP2, 2]
+						previousCost2 = cost
 
-				for rowP3 in range (0, 4): # for each row in column 3
-					cost += matrix[rowP3, 3]	
-					costArray[count] = cost
-					cost = previousCost2
-					count += 1
+						for rowP3 in range (0, 4): # for each row in column 3
+							# Each row can only be assigned to exactly one column and 
+							# exactly one column can be assigned to one row.
+							if rowP3 != rowP0 and rowP3 != rowP1 and rowP3 != rowP2:
+								cost += matrix[rowP3, 3]	
+								costArray[count] = cost
+								cost = previousCost2
+								count += 1
 
-				cost = previousCost1
+						cost = previousCost1
 
-			cost = previousCost0
+				cost = previousCost0
 
-				# cost += matrix[rowP1, 1]
-				# costArray[count] = cost
-				# cost = previousCost
-				# count += 1
-
-	return costArray
-
-	# for col0 in range (0, height): # for each row
-	# 	cost += matrix[col0, col0]
-	# 	for col1 in range (0, height):
-	# 		if col1 != col0: 
-	# 			cost += matrix[col0, col1]
-	# 			for col2 in range (0, height):
-	# 				if col2 != col0 or col2 != col1:
-	# 					cost += matrix[col0, col2]
-	# 					for col3 in range (0, height):
-	# 						if col3 != col0 or col3 != col1 or col3 != col2:
-	# 							cost += matrix[col0, col3]
-	# 							costArray[count] = cost
-	# 							count += 1
-	# 							cost = 0
-	# 						else: 
-	# 							break
-	# 				else:
-	# 					break
-	# 		else:
-	# 			break
-	
-
-	return costArray
-
+	# five hours later... :(
+	return min(costArray)
 
 
 
