@@ -4,10 +4,12 @@ CS 2223 Project 2
 April 17, 2016
 
 main
-	The main function. asks for the user if he/she would like to run the exhastive search or 
-	a greedy algorithm. The function then runs either exhastiveSearch() or greedyAlgorithm() 
+	The main function asks the user if he/she would like to run the exhaustive search or a 
+	greedy algorithm. The function then runs either exhaustiveSearch() or greedyAlgorithm()
 	which can be found in Functions.py. For both functions the time elapsed is printed.
-	[relies on the 'exhastiveSearch' and 'greedyAlgorithm' in the file Functions.py]
+
+	The user can use any matrix as he/she choses as long as he/she enters in into the
+	input_Matrix file following the given format
 
 	The two functions solve the problem below:
 		You are a high-level security manager at the Gombel Security Firm. On any day you have
