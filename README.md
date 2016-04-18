@@ -1,4 +1,6 @@
-Obatola Seward-Evans * CS 2223 Project 2
+Obatola Seward-Evans
+
+CS 2223 Project 2
 
 # Algorithms Project 2
 
@@ -26,7 +28,7 @@ The main function asks the user if he/she would like to run the exhaustive searc
 The user can use any matrix as he/she choses as long as he/she enters in into the input_Matrix file following the given format
 
 To run, type:
-	python Run_Matrix_Cost.py
+`python Run_Matrix_Cost.py`
 
 make sure you have both files:
 - Run_Fib.py
