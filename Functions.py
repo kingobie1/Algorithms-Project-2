@@ -64,7 +64,7 @@ exhaustiveSearch(width, height)
 """
 # matrix [row, column]
 def exhaustiveSearch(width, height):
-	costArray = [0 for i in range(193)]
+	costArray = [0 for i in range(300)]
 	cost = 0
 	previousCost = 0
 	count = 0
@@ -79,9 +79,15 @@ def exhaustiveSearch(width, height):
 
 			for rowP2 in range (0, 4): # for each row in column 2
 				cost += matrix[rowP2, 2]
-				costArray[count] = cost
+				previousCost2 = cost
+
+				for rowP3 in range (0, 4): # for each row in column 3
+					cost += matrix[rowP3, 3]	
+					costArray[count] = cost
+					cost = previousCost2
+					count += 1
+
 				cost = previousCost1
-				count += 1
 
 			cost = previousCost0
 
