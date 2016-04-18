@@ -14,6 +14,11 @@ Each cryptographer can only be assigned to exactly one message and exactly one m
 | Bud   | 5    | 8    | 1    |   8  |
 | Kevin | 7    | 6    | 9    |   4  |
 
+Although you are given this small example, your code should be able to read in any n by m matrix where n and m are equal. Here are the steps to complete the project:
+
+- Step 1. Code an exhaustive search algorithm to find the optimal solution to the above problem.
+
+- Step 2. Code a greedy algorithm to find the optimal solution to the problem.
 
 ## Solution
 The main function asks the user if he/she would like to run the exhaustive search or a greedy algorithm. The function then runs either exhaustiveSearch() or greedyAlgorithm() which can be found in Functions.py. For both functions the time elapsed is printed.
