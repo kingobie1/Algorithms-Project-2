@@ -3,7 +3,7 @@ Obatola Seward-Evans * CS 2223 Project 2
 # Algorithms Project 2
 
 ## Problem: 
-You are a high-level security manager at the Gombel Security Firm. On any day you have access to n professional cryptographers and m messages to crack. Today, you have 4 hackers at your disposal and 4 intercepted messages that need to be decrypted immediately.
+You are a high-level security manager at the Gombel Security Firm. On any day you have access to _n_ professional cryptographers and _m_ messages to crack. Today, you have 4 hackers at your disposal and 4 intercepted messages that need to be decrypted immediately.
 
 Each cryptographer can only be assigned to exactly one message and exactly one message can be assigned to one cryptographer. Your goal is to find an assignment that minimizes the total cost to crack the codes. The cost matrix is below:
 
@@ -14,7 +14,7 @@ Each cryptographer can only be assigned to exactly one message and exactly one m
 | Bud   | 5    | 8    | 1    |   8  |
 | Kevin | 7    | 6    | 9    |   4  |
 
-Although you are given this small example, your code should be able to read in any n by m matrix where n and m are equal. Here are the steps to complete the project:
+Although you are given this small example, your code should be able to read in any _n_ by _m_ matrix where _n_ and _m_ are equal. Here are the steps to complete the project:
 
 - Step 1. Code an exhaustive search algorithm to find the optimal solution to the above problem.
 

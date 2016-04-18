@@ -48,8 +48,10 @@ while True:
 	getMatrix(width, height) # get matrix from input_Matrix file
 
 	# run EXHASTIVE SEARCH if user selects 1st option:
-	if option == "1" or option == "exhastive search" or option == "e":
+	if option == "1" or option == "exhaustive search" or option == "e":
 		print "\n\n- - - EXHAUSTIVE SEARCH ALGORITHM - - - "
+		optimalCost = exhaustiveSearch(width, height) # get optimat cost
+		print "\n    The total cost using the exhaustive search algorithm is ", optimalCost
 
 	# run GREEDY ALGORITHM if user selects 2ND option:
 	elif option == "2" or option == "greedy algorithm" or option == "g":

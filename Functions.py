@@ -62,8 +62,55 @@ exhaustiveSearch(width, height)
 
 	calculates the optimal cost of the matrix, solving problem listed on the top of this file.
 """
+# matrix [row, column]
 def exhaustiveSearch(width, height):
-	return true
+	costArray = [0 for i in range(193)]
+	cost = 0
+	previousCost = 0
+	count = 0
+
+	for rowP0 in range (0, 4): # for each row in column 0
+		cost = matrix[rowP0, 0]
+		previousCost = cost
+
+		for rowP1 in range (0, 4): # for each row in column 1
+			if rowP1 != rowP0:
+				cost += matrix[rowP1, 1]
+				costArray[count] = cost
+				cost = previousCost
+				count += 1
+
+		# cost += matrix[col1, col0]
+		# costArray[count] = cost
+		# cost = previousCost
+		# count += 1
+
+	return costArray
+
+	# for col0 in range (0, height): # for each row
+	# 	cost += matrix[col0, col0]
+	# 	for col1 in range (0, height):
+	# 		if col1 != col0: 
+	# 			cost += matrix[col0, col1]
+	# 			for col2 in range (0, height):
+	# 				if col2 != col0 or col2 != col1:
+	# 					cost += matrix[col0, col2]
+	# 					for col3 in range (0, height):
+	# 						if col3 != col0 or col3 != col1 or col3 != col2:
+	# 							cost += matrix[col0, col3]
+	# 							costArray[count] = cost
+	# 							count += 1
+	# 							cost = 0
+	# 						else: 
+	# 							break
+	# 				else:
+	# 					break
+	# 		else:
+	# 			break
+	
+
+	return costArray
+
 
 
 
@@ -76,8 +123,9 @@ greedyAlgorithm(width, height)
 
 	calculates the 'optimal' cost of the matrix, solving problem listed on the top of this file.
 """
+
 def greedyAlgorithm(width, height):
-	minForRow = 1000000
+	minForRow = 9999999999
 	index = 0
 	optimalCost = 0
 	takenColumns=[0 for i in range(width)] # means taken
