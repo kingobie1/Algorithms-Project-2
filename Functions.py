@@ -96,8 +96,8 @@ def greedyAlgorithm(width, height):
 
 		optimalCost += minForRow
 		columnIsTaken[index] = 1 # show that columnIsTaken2[index] has been taken
-		print "    minimum for row ", row , " is: ", minForRow, " found at column: ", index, "ie coordinates [",row,",",index,"]"
-		minForRow = 1000000 # reinitialize
+		# print "    minimum for row ", row , " is: ", minForRow, " found at column: ", index, "ie coordinates [",row,",",index,"]"
+		minForRow = 9999999999 # reinitialize
 
 
 	return optimalCost

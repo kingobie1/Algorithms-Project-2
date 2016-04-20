@@ -13,12 +13,12 @@ main
 
 	The two functions solve the problem below:
 		You are a high-level security manager at the Gombel Security Firm. On any day you have
-	    access to n professional cryptographers and m messages to crack. Today, you have 4 hackers
-	    at your disposal and 4 intercepted messages that need to be decrypted immediately.
+		access to n professional cryptographers and m messages to crack. Today, you have 4 hackers
+		at your disposal and 4 intercepted messages that need to be decrypted immediately.
 
-	    Each cryptographer can only be assigned to exactly one message and exactly one message
-	    can be assigned to one cryptographer. Your goal is to find an assignment that minimizes
-	    the total cost to crack the codes. The cost matrix is below:
+		Each cryptographer can only be assigned to exactly one message and exactly one message
+		can be assigned to one cryptographer. Your goal is to find an assignment that minimizes
+		the total cost to crack the codes. The cost matrix is below:
 """
 
 #!/usr/bin/python
@@ -28,24 +28,24 @@ from Functions import *
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+width = 0
+height = 0
 isFirstTime = 1 # is this first time the user has been to main menu?
 optimalCost = 0 # optimal cost determined by algorithms
 
 while True:
+	if isFirstTime == 1: # if first time at main menu
+		width = input("\nWhat is the matrices width?\n> ")
+		height = width
+		getMatrix(width, height) # get matrix from input_Matrix file
+
 	print "\n\n- - - MAIN MENU - - - "
 	print "Select function:"
 	print "  1. exhastive search"
 	print "  2. greedy algorithm"
 	print "  3. quit"
+
 	option = raw_input("\n> ") # gather option value from user.
-
-	width = 4
-	height = 4
-	# if isFirstTime == 1: # if first time at main menu
-	#     width = input("\nwhat is the matrix width?\n> ")
-	#     height = input("\nwhat is the matrix height?\n> ")
-
-	getMatrix(width, height) # get matrix from input_Matrix file
 
 	# run EXHASTIVE SEARCH if user selects 1st option:
 	if option == "1" or option == "exhaustive search" or option == "e":
