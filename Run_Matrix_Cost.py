@@ -45,21 +45,24 @@ while True:
 	#     width = input("\nwhat is the matrix width?\n> ")
 	#     height = input("\nwhat is the matrix height?\n> ")
 
-	getMatrix(width) # get matrix from input_Matrix file
+	getMatrix(width, height) # get matrix from input_Matrix file
 
 	# run EXHASTIVE SEARCH if user selects 1st option:
 	if option == "1" or option == "exhaustive search" or option == "e":
 		print "\n\n- - - EXHAUSTIVE SEARCH ALGORITHM - - - "
-		optimalCost = exhaustiveSearch(width) # get optimat cost
+		t0 = time.clock()  # get initial time for recursive function.
+		optimalCost = exhaustiveSearch(width, height) # get optimat cost
 		print "\n    The total cost using the exhaustive search algorithm is ", optimalCost
+		print "    time elapsed:", (time.clock() - t0) * 1000,"millisecond\n"
+
 
 	# run GREEDY ALGORITHM if user selects 2ND option:
 	elif option == "2" or option == "greedy algorithm" or option == "g":
 		print "\n\n- - - GREEDY ALGORITHM - - - \n"
-		t0 = time.clock()  # get initial time for recursive function.
-		optimalCost = greedyAlgorithm(width) # get optimat cost
+		t1 = time.clock()  # get initial time for recursive function.
+		optimalCost = greedyAlgorithm(width, height) # get optimat cost
 		print "\n    The optimal cost using the greedy algorithm is ", optimalCost
-		print "    time elapsed:", (time.clock() - t0) * 1000,"millisecond\n"
+		print "    time elapsed:", (time.clock() - t1) * 1000,"millisecond\n"
 
 	# QUIT application
 	elif option == "3" or option == "quit" or option == "q":

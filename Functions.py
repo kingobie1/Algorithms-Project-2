@@ -17,6 +17,7 @@ Problem to solve:
 """
 
 import time # import time libray 
+import itertools
 matrix = {} # create matrix of dynamic size
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -56,50 +57,18 @@ exhaustiveSearch(width, height)
 	calculates the optimal cost of the matrix, solving problem listed on the top of this file.
 """
 def exhaustiveSearch(width, height):
-	costArray = [0 for i in range(24)]
-	cost = 0
-	previousCost = 0
-	count = 0
+	arrayOfPerms = itertools.permutations(range(width));
+	optimalCost = 9999999999
 
-	for rowP0 in range (0, 4): # for each row in column 0
-		cost = matrix[rowP0, 0]
-		previousCost0 = cost
+	for perm in arrayOfPerms:
+		total = 0
+		for index in range(0, width):
+			total += matrix [ perm[index], index ]
 
-		for rowP1 in range (0, 4): # for each row in column 1
-			# Each row can only be assigned to exactly one column and 
-			# exactly one column can be assigned to one row.
-			if rowP1 != rowP0:
-				cost += matrix[rowP1, 1]
-				previousCost1 = cost
+		if total < optimalCost:
+			optimalCost = total
+	return optimalCost
 
-				for rowP2 in range (0, 4): # for each row in column 2
-					# Each row can only be assigned to exactly one column and 
-					# exactly one column can be assigned to one row.
-					if rowP2 != rowP0 and rowP2 != rowP1:
-						cost += matrix[rowP2, 2]
-						previousCost2 = cost
-
-						for rowP3 in range (0, 4): # for each row in column 3
-							# Each row can only be assigned to exactly one column and 
-							# exactly one column can be assigned to one row.
-							if rowP3 != rowP0 and rowP3 != rowP1 and rowP3 != rowP2:
-								cost += matrix[rowP3, 3]	
-								costArray[count] = cost
-								cost = previousCost2
-								count += 1
-
-						cost = previousCost1
-				cost = previousCost0
-
-	# five hours later... :(
-	return min(costArray)
-
-costArray = [0 for i in range(24)]
-def exhaustiveRecSearch(width, height, cost, count):
-	for row in range (count, 4):
-		cost += matrix[row, count]
-		count += 1
-		costArray[count] = exhaustiveRecSearch(width - 1, height - 1, cost, count)
 
 
 
