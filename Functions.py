@@ -33,20 +33,13 @@ getMatrix(width, height)
 	creates 2d array named 'matrix' from the matrix entered in the file input_Matrix.
 """
 def getMatrix(width, height):
-	i = 0
-	j = 0
-
 	matrixFile = open("input_Matrix", "r")
 
 	for h in range(0, height):
 		str = matrixFile.readline()
 		tempArray = str.split()
 		for w in range(0, width):
-			# str = matrixFile.read(2)
-			# str = ''.join(str.split()) # take out space and newline
-			# matrix[i, j] = int(str) # convert to integer and add to matrix
 			matrix[h, w] = int(tempArray[w]) # convert to integer and add to matrix
-			# print matrix[h, w]
 
 	matrixFile.close()
 	return matrix
@@ -62,7 +55,6 @@ exhaustiveSearch(width, height)
 
 	calculates the optimal cost of the matrix, solving problem listed on the top of this file.
 """
-# matrix [row, column]
 def exhaustiveSearch(width, height):
 	costArray = [0 for i in range(24)]
 	cost = 0
@@ -97,12 +89,17 @@ def exhaustiveSearch(width, height):
 								count += 1
 
 						cost = previousCost1
-
 				cost = previousCost0
 
 	# five hours later... :(
 	return min(costArray)
 
+costArray = [0 for i in range(24)]
+def exhaustiveRecSearch(width, height, cost, count):
+	for row in range (count, 4):
+		cost += matrix[row, count]
+		count += 1
+		costArray[count] = exhaustiveRecSearch(width - 1, height - 1, cost, count)
 
 
 
@@ -117,19 +114,19 @@ greedyAlgorithm(width, height)
 
 def greedyAlgorithm(width, height):
 	minForRow = 9999999999
-	index = 0
+	index = 0 # where minumum row was found
 	optimalCost = 0
-	takenColumns=[0 for i in range(width)] # means taken
+	columnIsTaken=[0 for i in range(width)] # means taken
 
 	for row in range (0, height):
 		for col in range(0, width):
-			if takenColumns[col] == 0: # if the column has yet to be taken
+			if columnIsTaken[col] == 0: # if the column has yet to be taken
 				if matrix[row, col] < minForRow: # check if it has the minimum cost
 					minForRow = matrix[row, col] # if the minimum cost so far has been found change var
 					index = col # compute the index where the minimum cost was found
 
 		optimalCost += minForRow
-		takenColumns[index] = 1 # show that takenColumns[index] has been taken
+		columnIsTaken[index] = 1 # show that columnIsTaken2[index] has been taken
 		print "    minimum for row ", row , " is: ", minForRow, " found at column: ", index, "ie coordinates [",row,",",index,"]"
 		minForRow = 1000000 # reinitialize
 
